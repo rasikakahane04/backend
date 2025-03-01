@@ -4,6 +4,7 @@ require('dotenv').config()
 const User=require('./models/User')
 const bcrypt=require('bcryptjs')
 const recipeRoutes = require('./routes/recipeRoutes');
+const settingsRoutes = require('./routes/settingsRoutes');
 
 const app=express()
 const PORT=3000
@@ -51,6 +52,9 @@ app.post('/login',async(req,res)=>{
 
 //Use Recipe Routes
 app.use('/api', recipeRoutes);
+
+// Use Settings Routes
+app.use('/api', settingsRoutes);
 
 
 mongoose.connect(process.env.MONGO_URL, {
